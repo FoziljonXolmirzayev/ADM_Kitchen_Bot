@@ -26,7 +26,6 @@ exports.onStart = async function (ctx) {
       },
     });
   } catch (error) {
-    console.log(error);
     ctx.reply("Something whent wrong!");
   }
 };
@@ -58,7 +57,6 @@ exports.onEnterTableName = async function (ctx) {
       );
     }
   } catch (error) {
-    console.log(error);
     ctx.reply("error");
   }
 };

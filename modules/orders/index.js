@@ -16,7 +16,6 @@ module.exports.getOrders = async (req, res) => {
         isCanceled: false,
       },
     });
-    console.log(orders);
     res.send(orders);
   } catch (error) {
     console.error("Error fetching orders: ", error);

@@ -30,11 +30,9 @@ const getUserTableIdWizard = new Composer();
 
 getUserTableIdWizard.on("text", async (context) => {
   try {
-    console.log("heeey");
     const tableId = context.message.text;
 
     const tableIdRegex = /^[A-Z]{2}\d{4}$/;
-    console.log(tableId);
     if (!tableIdRegex.test(tableId)) {
       return await context.reply(
         "Table raqamingizni to'g'ri formatda kiriting! (Misol uchun: AB1234)"
@@ -47,8 +45,6 @@ getUserTableIdWizard.on("text", async (context) => {
       ...context.wizard.state.registerData,
       telegramId: context.from.id,
     });
-
-    console.log(context.update.message.chat);
 
     await context.reply("Ro'yxatdan o'tish muvaffaqiyatli yakunlandi!");
 

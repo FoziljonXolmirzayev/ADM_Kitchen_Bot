@@ -29,7 +29,6 @@ module.exports.getMenus = async (req, res) => {
 module.exports.deleteMenu = async (req, res) => {
   try {
     const menuId = parseInt(req.params.id, 10);
-    console.log(menuId);
     if (!menuId || menuId == ":id" || menuId <= 0) {
       res.sends("Incorrect data !");
       return;

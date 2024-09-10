@@ -41,7 +41,6 @@ indexWizard.start(async (context) => {
       ])
     );
   } catch (error) {
-    console.log(error);
     context.reply("Xatolik yuz berdi!");
   }
 });
@@ -90,14 +89,12 @@ indexWizard.command("get_menu", async (context) => {
       ])
     );
   } catch (error) {
-    console.log(error);
     context.reply("Xatolik yuz berdi!");
   }
 });
 
 indexWizard.action(/cancel_order_(.+)/, async (context) => {
   try {
-    console.log("Cancel order triggered");
     const orderId = context.match[1];
     const { id: telegramId } = context.from;
 
@@ -121,7 +118,6 @@ indexWizard.action(/cancel_order_(.+)/, async (context) => {
 
     return context.reply("Siz buyurtmani muvaffaqiyatli bekor qildingiz!");
   } catch (error) {
-    console.log(error);
     context.reply("Xatolik yuz berdi.");
   }
 });
@@ -171,7 +167,6 @@ indexWizard.action(/order_(.+)/, async (context) => {
       ]).oneTime()
     );
   } catch (error) {
-    console.log(error);
     context.reply("Order berishda xatolik yuz berdi.");
   }
 });

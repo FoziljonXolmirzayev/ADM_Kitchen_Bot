@@ -8,7 +8,6 @@ const bot = require("../../configs/bot");
 module.exports.createUser = async (req, res) => {
   try {
     const { value, error } = validateUser(req.body);
-    console.log(value);
     if (error) {
       res.send("Incorrect data !!! " + error);
       return;
@@ -74,7 +73,6 @@ module.exports.sendMenuToUsers = async (req, res) => {
 
     for (const user of users) {
       const message = `Bugungi menyu: ${menu.description}\nHafta kuni: ${menu.weekday}`;
-      console.log(bot, user.telegramId, message);
 
       await bot.telegram.sendMessage(user.telegramId, message);
     }
