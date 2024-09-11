@@ -32,14 +32,14 @@ module.exports.getUsers = async (req, res) => {
 module.exports.updateUser = async (req, res) => {
   try {
     const { name, tableId } = req.body;
-    const updatedUser = Users.update(
+    const updatedUser = await Users.update(
       {
         name,
         tableId,
       },
       { where: { id: req.params.id } }
     );
-    res.send(updatedUser);
+    res.send({ updatedUser });
   } catch (error) {
     throw new Error(error);
   }

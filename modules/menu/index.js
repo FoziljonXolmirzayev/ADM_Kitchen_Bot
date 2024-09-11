@@ -49,7 +49,7 @@ module.exports.updateMenu = async (req, res) => {
       { description, weekday },
       { where: { id: req.params.id } }
     );
-    res.send(updatedMenu);
+    res.send({ updatedMenu });
   } catch (error) {
     throw new Error(error);
   }

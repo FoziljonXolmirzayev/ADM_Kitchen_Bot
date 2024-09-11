@@ -10,7 +10,6 @@ const Menu = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    deletedAt: { type: DataTypes.DATE },
   },
   { tableName: "Menu", timestamps: true }
 );

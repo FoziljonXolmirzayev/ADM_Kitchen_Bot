@@ -20,6 +20,7 @@ mainRoute.get("/menus", getMenus);
 mainRoute.delete("/menu/delete/:id", deleteMenu);
 mainRoute.put("/menu/update/:id", updateMenu);
 
+mainRoute.post("/user/create", createUser);
 mainRoute.post("/send", sendMenuToUsers);
 mainRoute.get("/users", getUsers);
 mainRoute.put("/user/update/:id", updateUser);
