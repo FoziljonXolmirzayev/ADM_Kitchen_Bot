@@ -16,6 +16,10 @@ const getUserNameWizard = new Composer();
 
 getUserNameWizard.on("text", async (context) => {
   try {
+    if (context.message.text == "/get_menu") {
+      return context.scene.enter("userScene");
+    }
+
     context.wizard.state.registerData = { name: context.message.text };
 
     await context.reply("Table raqamingizni kiriting! (Misol uchun: AB1234)");

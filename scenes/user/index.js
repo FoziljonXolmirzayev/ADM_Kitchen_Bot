@@ -47,6 +47,15 @@ indexWizard.start(async (context) => {
 
 indexWizard.command("get_menu", async (context) => {
   try {
+    const foundUser = await Users.findOne({
+      where: { telegramId: context.from.id },
+    });
+
+    if (!foundUser) {
+      await context.reply("Botdan foydalanish uchun avval ro'yxatdan o'ting!");
+      return context.scene.enter("registerScene");
+    }
+
     const startOfDay = new Date();
     startOfDay.setHours(0, 0, 0, 0);
     const endOfDay = new Date();

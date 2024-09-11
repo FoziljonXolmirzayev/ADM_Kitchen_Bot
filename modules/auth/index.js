@@ -15,7 +15,7 @@ module.exports.login = async (req, res) => {
       res.send("Incorrect login or password !");
       return;
     }
-    const token = generateToken(name, password);
+    const token = generateToken(name);
     res.send(token);
   } catch (error) {
     throw new Error(error);

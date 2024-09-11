@@ -16,7 +16,7 @@ module.exports.createMenu = async (req, res) => {
 };
 module.exports.getMenus = async (req, res) => {
   try {
-    const menus = await Menu.findAll();
+    const menus = await Menu.findAll({ where: { isDeleted: false } });
     if (menus === null) {
       res.send("There isn't any menu !!!");
       return;
@@ -33,7 +33,10 @@ module.exports.deleteMenu = async (req, res) => {
       res.sends("Incorrect data !");
       return;
     }
-    const deletedMenu = await Menu.destroy({ where: { id: menuId } });
+    const deletedMenu = await Menu.update(
+      { isDeleted: true },
+      { where: { id: menuId } }
+    );
     res.status(200).json({ deletedMenu });
   } catch (error) {
     throw new Error(error);

@@ -12,8 +12,4 @@ bot.start((context) => {
   context.scene.enter("userScene");
 });
 
-bot.command("get_menu", (context) => {
-  context.scene.enter("userScene");
-});
-
 module.exports = bot;
