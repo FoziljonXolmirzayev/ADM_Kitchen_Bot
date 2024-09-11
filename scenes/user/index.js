@@ -16,30 +16,7 @@ indexWizard.start(async (context) => {
       await context.reply("Botdan foydalanish uchun avval ro'yxatdan o'ting!");
       return context.scene.enter("registerScene");
     }
-
-    const today = new Date();
-    const startOfDay = new Date(today.setHours(0, 0, 0, 0));
-    const endOfDay = new Date(today.setHours(23, 59, 59, 999));
-
-    const menu = await Menu.findOne({
-      where: {
-        createdAt: {
-          [Op.between]: [startOfDay, endOfDay],
-        },
-      },
-      order: [["createdAt", "DESC"]],
-    });
-
-    if (!menu) {
-      return context.reply("Bugungi menyu topilmadi.");
-    }
-
-    await context.reply(
-      `Bugungi menyu: ${menu.description}\nHafta kuni: ${menu.weekday}`,
-      Markup.inlineKeyboard([
-        [Markup.button.callback("Order berish", `order_${menu.id}`)],
-      ])
-    );
+    context.reply("Xush kelibsiz! ");
   } catch (error) {
     context.reply("Xatolik yuz berdi!");
   }
@@ -66,6 +43,7 @@ indexWizard.command("get_menu", async (context) => {
         createdAt: {
           [Op.between]: [startOfDay, endOfDay],
         },
+        isDeleted: false,
       },
       order: [["createdAt", "DESC"]],
     });

@@ -1,4 +1,3 @@
-const { Op } = require("sequelize");
 const Users = require("../users/model");
 const { validateUser } = require("../users/validator");
 const Order = require("../orders/model");
@@ -52,6 +51,9 @@ module.exports.deleteUser = async (req, res) => {
       res.sends("Incorrect data !");
       return;
     }
+
+    await Order.destroy({ where: { userId } });
+
     const deletedUser = await Users.destroy({ where: { id: userId } });
     res.json({ deletedUser });
   } catch (error) {

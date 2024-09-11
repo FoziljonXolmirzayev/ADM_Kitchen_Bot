@@ -18,7 +18,22 @@ module.exports.getOrders = async (req, res) => {
     });
     res.send(orders);
   } catch (error) {
-    console.error("Error fetching orders: ", error);
-    throw error;
+    throw new Error(error);
+  }
+};
+
+module.exports.deleteOrder = async (req, res) => {
+  try {
+    const orderId = parseInt(req.params.id, 10);
+
+    if (!orderId || orderId == ":id" || orderId <= 0) {
+      res.sends("Incorrect data !");
+      return;
+    }
+
+    const deletedOrder = await Order.destroy({ where: { id: orderId } });
+    res.json({ deletedOrder });
+  } catch (error) {
+    throw new Error(error);
   }
 };

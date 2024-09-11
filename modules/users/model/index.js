@@ -7,7 +7,7 @@ const Users = sequelize.define(
     name: { type: DataTypes.STRING, allowNull: false },
     tableId: { type: DataTypes.STRING, allowNull: false, unique: true },
     role: { type: DataTypes.ENUM("ADMIN", "USER"), defaultValue: "USER" },
-    telegramId: { type: DataTypes.FLOAT, allowNull: false },
+    telegramId: { type: DataTypes.INTEGER, allowNull: false },
   },
   {
     tableName: "User",
