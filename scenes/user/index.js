@@ -61,7 +61,7 @@ indexWizard.command("get_menu", async (context) => {
         Markup.inlineKeyboard([
           [
             Markup.button.callback(
-              "❌ Orderni bekor qilish",
+              "❌ Buyurtmani bekor qilish",
               `cancel_order_${foundOrder.id}`
             ),
           ],
@@ -72,7 +72,7 @@ indexWizard.command("get_menu", async (context) => {
     return await context.reply(
       `Bugungi menyu: ${menu.description}\nHafta kuni: ${menu.weekday}`,
       Markup.inlineKeyboard([
-        [Markup.button.callback("Order berish", `order_${menu.id}`)],
+        [Markup.button.callback("Buyurtma berish", `order_${menu.id}`)],
       ])
     );
   } catch (error) {
@@ -143,18 +143,18 @@ indexWizard.action(/order_(.+)/, async (context) => {
     });
 
     return context.reply(
-      "Order muvaffaqiyatli berildi!",
+      "Buyurtma muvaffaqiyatli berildi!",
       Markup.inlineKeyboard([
         [
           Markup.button.callback(
-            "❌ Orderni bekor qilish",
+            "❌ Buyurtmani bekor qilish",
             `cancel_order_${order.id}`
           ),
         ],
       ]).oneTime()
     );
   } catch (error) {
-    context.reply("Order berishda xatolik yuz berdi.");
+    context.reply("Buyurtma berishda xatolik yuz berdi.");
   }
 });
 
